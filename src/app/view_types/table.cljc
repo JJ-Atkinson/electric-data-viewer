@@ -6,7 +6,7 @@
    [hyperfiddle.electric-dom2 :as dom]
    [hyperfiddle.electric-ui4 :as ui]
    [app.view-types.view-db :as view-db]
-   [app.dom-utils :as dom-utils]))
+   ))
 
 
 ;; Works on lists of maps, or a map itself.
