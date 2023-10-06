@@ -18,7 +18,5 @@
 (e/defn DatifyPrStrClient
   [{::view-options/keys [id]
     ::keys              [data] :as e}]
-  (dom-utils/with-mounted-edge id
-    (js/console.log "AAA" id data dom/node)
-    (dom/div
-      (dom/text data))))
+  (dom/div
+    (dom/text data)))

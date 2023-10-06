@@ -5,6 +5,7 @@
    [app.view-types.view-options :as view-options]
    [hyperfiddle.electric-dom2 :as dom]
    [hyperfiddle.electric-ui4 :as ui]
+   [app.view-types.view-db :as view-db]
    [app.dom-utils :as dom-utils]))
 
 
@@ -27,7 +28,8 @@
 (e/defn DatifyTableClient
   [{::view-options/keys [id]
     ::keys              [rows] :as input}]
-  (dom-utils/with-mounted-edge id
+  (let [id->view-fn (e/watch view-db/!id->view-fn)]
+    (js/console.log "DatifyTableClient" rows id->view-fn)
     (dom/table
       (dom/thead
         (dom/tr
@@ -38,5 +40,8 @@
           (dom/tr
             (e/for [col row]
               (dom/td
-                (dom/props {:id (::view-options/id col)})
-                ))))))))
+                (let [id      (::view-options/id col)
+                      view-fn (get id->view-fn id)]
+                  (js/console.log "view-fn" view-fn)
+                  (when view-fn
+                    (new view-fn)))))))))))
