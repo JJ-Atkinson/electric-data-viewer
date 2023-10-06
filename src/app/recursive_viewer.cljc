@@ -4,7 +4,6 @@
    [app.view-types.table :as view-table]
    [app.view-types.view-options :as view-options]
    [app.view-types.pr-str :as pr-str]
-   [app.dom-utils :as dom-utils]
    [app.view-types.view-db :as view-db]
    [hyperfiddle.electric :as e]
    [hyperfiddle.electric-dom2 :as dom]
